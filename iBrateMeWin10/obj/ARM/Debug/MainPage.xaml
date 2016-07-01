@@ -1,0 +1,167 @@
+﻿<Page xmlns:UI="using:Microsoft.Advertising.WinRT.UI" 
+    x:Class="iBrateMeWin10.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:iBrateMeWin10"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.BottomAppBar>
+        <CommandBar Background="#FFF4B141">
+            <AppBarButton x:ConnectionId='1'
+                x:Name="removeAdButton"
+                Icon="Tag" 
+                Label="Remove Ad"
+                Width="100"/>
+            <AppBarButton x:ConnectionId='2'
+                x:Name="reviewAppButton"
+                Icon="LikeDislike" 
+                Label="Review"
+                Width="100"/>
+            <AppBarButton x:ConnectionId='3'
+                x:Name="aboutAppButton"
+                Icon="Help" 
+                Label="About"
+                Width="100"/>
+        </CommandBar>
+
+    </Page.BottomAppBar>
+
+    <Grid Background="#FFE6E6E6">
+
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="110" 
+                                      MinHeight="110"
+                                      MaxHeight="110"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="100" 
+                                      MinHeight="100"
+                                      MaxHeight="100"/>
+
+        </Grid.RowDefinitions>
+        
+        <!-- Title Pane -->
+
+        <RelativePanel x:ConnectionId='4' Grid.Row="0" 
+                       Background="#FFF4B141"
+                       Name="TitlePane">
+
+            <TextBlock x:ConnectionId='12' x:Name="iBrateMeTextBlock" 
+                   Margin="0,0,0,0" 
+                   TextWrapping="Wrap" 
+                   Text="iBrateMe"
+                   FontSize="69"
+                   Grid.Row="0"
+                   RelativePanel.AlignTopWithPanel="True"
+                   RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+
+            <TextBlock x:ConnectionId='13' x:Name="SloganTextBox" 
+                   Margin="0,0,0,-10" 
+                   TextWrapping="Wrap" 
+                   Text="Oh yes, iBrate me there..." 
+                   VerticalAlignment="Bottom"
+                   FontSize="21"
+                   Grid.Row="0" 
+                   RelativePanel.AlignBottomWith="iBrateMeTextBlock"
+                   RelativePanel.AlignHorizontalCenterWith="iBrateMeTextBlock"/>
+
+        </RelativePanel>
+
+        <!-- Top Pane -->
+
+        <RelativePanel x:ConnectionId='5' Grid.Row="1"
+                       Name="TopPane">
+
+            <Image x:ConnectionId='10' x:Name="iBrateMeToggleButtonClicked" 
+               Height="256" 
+               Margin="0,0,0,0" 
+               Grid.Row="1" 
+               VerticalAlignment="Center" 
+               Width="256" 
+               Source="Assets/Icon_256_clicked.png" 
+               Opacity="100"
+               RelativePanel.AlignHorizontalCenterWithPanel="True"
+               RelativePanel.AlignVerticalCenterWithPanel="True"/>
+
+            <Image x:ConnectionId='11' x:Name="iBrateMeToggleButton" 
+               Height="256" 
+               Margin="0,0,0,0" 
+               Grid.Row="1" 
+               VerticalAlignment="Center" 
+               Width="256" 
+               Source="Assets/Icon_256.png" 
+                                                   
+               Opacity="100"
+               RelativePanel.AlignHorizontalCenterWithPanel="True"
+               RelativePanel.AlignVerticalCenterWithPanel="True"/>
+
+        </RelativePanel>
+
+        <!--Middle Pane-->
+
+        <RelativePanel x:ConnectionId='6' Grid.Row="2"
+                       Name="MiddlePane">
+
+            <Slider x:ConnectionId='9' x:Name="frequencySlider" 
+                Margin="0,0,0,0" 
+                Width="320" 
+                FontFamily="Global User Interface" 
+                Background="#FFB7B7B7" 
+                BorderBrush="#00B7B7B7" 
+                Foreground="#FF007AFF"
+                Maximum="1000" 
+                LargeChange="10" 
+                                                                        
+                Minimum="100"
+                RelativePanel.AlignHorizontalCenterWithPanel="True"
+                RelativePanel.AlignVerticalCenterWithPanel="True"/>
+
+        </RelativePanel>
+        
+        <!-- Bottom Pane -->
+
+        <RelativePanel x:ConnectionId='7' Grid.Row="3"
+                       Name="BottomPane">
+
+            <UI:AdControl x:ConnectionId='8' 
+            x:Name="Advert" 
+            ApplicationId="d25517cb-12d4-4699-8bdc-52040c712cab" 
+            AdUnitId="10043104"
+            Height="50" 
+            Margin="0,0,0,0" 
+            Width="320"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.AlignTopWithPanel="True"/>
+
+        </RelativePanel>
+
+        <!-- Button Animation -->
+        
+        <Grid.Resources>
+            <Storyboard x:ConnectionId='14' x:Name="StartVibrateStoryboard">
+                <DoubleAnimation Storyboard.TargetName="iBrateMeToggleButton"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="100"
+                                 To="0"
+                                 Duration="0:0:0.01"/>
+            </Storyboard>
+            <Storyboard x:ConnectionId='15' x:Name="StopVibrateStoryboard">
+                <DoubleAnimation Storyboard.TargetName="iBrateMeToggleButton"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="0"
+                                 To="100"
+                                 Duration="0:0:0.01"/>
+            </Storyboard>
+        </Grid.Resources>
+    </Grid>
+</Page>
+
